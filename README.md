@@ -1,3 +1,2 @@
 # CircleWithOpenGL
-Create A circle with OpenGL <br />
-    with a mouse controlled by mouse
+Creation Of A circle with OpenGL With Mouse Control
