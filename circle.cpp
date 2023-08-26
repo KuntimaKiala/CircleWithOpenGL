@@ -111,7 +111,7 @@ int main(){
     glUniform2f(mouseLocation,  mouse.x, mouse.y);
 
 
-    cout <<"mouse posiion :("<< mouse.x << " , " << mouse.y <<")"<< endl;
+    cout <<"mouse position :("<< mouse.x << " , " << mouse.y <<")"<< endl;
 
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0 ) ;

@@ -61,12 +61,11 @@ namespace constant {
 				    void main(){
 
 
-                    vec2 resolution = vec2(((width -gl_FragCoord.x)/width)*2-1.0 + mouse.x , ((height-gl_FragCoord.y)/height)*2-1 + mouse.y);
-                                     if(length(resolution) <  radius) {
-                                        fragColor = 0.5*Color; 
+                    vec2 pixel = vec2(((width -gl_FragCoord.x)/width)*2-1.0 + mouse.x , ((height-gl_FragCoord.y)/height)*2-1 + mouse.y);
+                    if(length(pixel) <  radius) {
+                        fragColor = 0.7*Color; 
                                         }
-                                     else fragColor = vec4(0.1f,0.1f,0.2f,1.0f); 
-                   })" ;
+                    else fragColor = vec4(0.1f,0.1f,0.2f,1.0f); })" ;
 
                                    
 
