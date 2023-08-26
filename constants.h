@@ -24,6 +24,8 @@ namespace constant {
                                         // second triangle 
                                         0, 1, 3,
                                         } ;
+
+    inline constexpr char* ShaderNames[]    = {"FRAGMENT", "VERTEX"}        ;                    
     struct Mouse
     {   Mouse(double x, double y) : x(0), y(0){}
         double x, y;
