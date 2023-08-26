@@ -25,7 +25,8 @@ int main(){
     goto Exit ; // its jumps to two lines before return 0;
   }
 
-
+  
+  
 
   while(!glfwWindowShouldClose(window)){
 

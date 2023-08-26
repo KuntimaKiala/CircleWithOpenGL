@@ -6,7 +6,24 @@ namespace constant {
 
     inline constexpr int width  = 700 ;
     inline constexpr int height = 700 ;
+    inline constexpr float vertices[] = {
+                                        // first triangle
+                                        -1.0f, 1.0f, 0.0f, //top left 
+                                         1.0f,-1.0f, 0.0f, //bottom right
+                                        -1.0f,-1.0f, 0.0f, //bottom left
+                                        // second triangle 
+                                         1.0f, 1.0f, 0.0f
 
+                                        
+                                        
+                                        } ;
+
+    inline constexpr int indice[] = {
+                                        // first triangle
+                                        0, 1, 2,
+                                        // second triangle 
+                                        0, 1, 3,
+                                        } ;
     struct Mouse
     {   Mouse(double x, double y) : x(0), y(0){}
         double x, y;
