@@ -18,16 +18,25 @@ int main(){
   glfwMakeContextCurrent(window) ;
   glfwSetFramebufferSizeCallback(window, framebuffersize) ;
 
+  // checking if openGL function are being called 
+  int gladFailed = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) ;
+  if (!gladFailed) {
+    cout <<"GLAD::FAILURE"<<endl;
+    goto Exit ; // its jumps to two lines before return 0;
+  }
+
 
 
   while(!glfwWindowShouldClose(window)){
 
+    glClearColor(0.1,0.1,0.2,1.0) ;
+    glClear(GL_COLOR_BUFFER_BIT) ;
     glfwPollEvents();
     glfwSwapBuffers(window) ;
 
   }
 
-
+Exit :
 glfwTerminate();
 return 0 ;
 
