@@ -12,11 +12,8 @@ namespace constant {
                                          1.0f,-1.0f, 1.0f, //bottom right
                                         -1.0f,-1.0f, 0.0f, //bottom left
                                         // second triangle 
-                                         1.0f, 1.0f, 0.0f // top right
-
-                                        
-                                        
-                                        } ;
+                                         1.0f, 1.0f, 0.0f // top right 
+                                         } ;
 
     inline constexpr int indices[] = {
                                         // first triangle
@@ -25,7 +22,6 @@ namespace constant {
                                         0, 1, 3,
                                         } ;
 
-    inline constexpr char* ShaderNames[]    = {"FRAGMENT", "VERTEX"}        ;                    
     struct Mouse
     {   Mouse(double x, double y) : x(0), y(0){}
         double x, y;
@@ -33,10 +29,7 @@ namespace constant {
     } ;
     struct Color
     {  
-   
         inline static constexpr float red =0.5f, green=0.3, blue = 0.3f, alpha =1.0f;
-      
-        
     } *color ;
    
     inline constexpr float radius = 0.3 ;
@@ -70,4 +63,4 @@ namespace constant {
                                    
 
 }
-//fragColor = Color ;
+

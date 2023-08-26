@@ -126,16 +126,12 @@ void init(){
   glfwInitHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwInitHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE) ;
   
-
-
 }
 
 void ShaderCheck(GLuint& shader, const char* shaderName) {
 
-
   int sucess =0;
   char InfoLog[512];
-
   glGetShaderiv(shader, GL_COMPILE_STATUS, &sucess) ;
   if(!sucess) {
       glGetShaderInfoLog(shader, 512, NULL, InfoLog) ;
@@ -148,20 +144,15 @@ void programCheck(GLuint& program) {
 
   int success ;
   char InfoLog[512] ;
-
   glGetProgramiv(program, GL_LINK_STATUS, &success);
   glGetProgramInfoLog(program,512, NULL, InfoLog ) ;
   if(!success){
     cout <<"ERROR::PROGRAM::SHADER::LINKING_FAILED\n" <<success << InfoLog << endl ;
-
   }
-
 
 }
 
 void framebuffersize(GLFWwindow* window, int width, int height){
 
   glViewport(0,0, width, height) ;
-
-
 }
