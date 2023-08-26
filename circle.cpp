@@ -89,28 +89,34 @@ int main(){
   GLuint widthLocation  = glGetUniformLocation(shaderProgram, "width");
   GLuint heightLocation = glGetUniformLocation(shaderProgram, "height");  
   GLuint mouseLocation = glGetUniformLocation(shaderProgram,  "mouse");
+
+  constant::Mouse mouse(0,0) ;
   
   while(!glfwWindowShouldClose(window)){
 
     glClearColor(0.1,0.1,0.2,1.0) ;
     glClear(GL_COLOR_BUFFER_BIT) ;
-    
+
+    glfwGetCursorPos(window, &mouse.x, &mouse.y) ;
+    mouse.x = (mouse.x/constant::width)*2- 1 ;
+    mouse.x = mouse.x > 1 ? 1.0 : mouse.x < -1 ? -1:mouse.x ;
+    mouse.y = ((constant::height- mouse.y)/constant::height)*2- 1 ;
+    mouse.y = mouse.y > 1 ? 1.0 : mouse.y < -1 ? -1:mouse.y ;
     
     glUseProgram(shaderProgram);
     glUniform1f(radiusLocation, constant::radius);
     glUniform4f(colorLocation,  constant::color->red, constant::color->green, constant::color->blue, constant::color->alpha);
     glUniform1f(widthLocation,  static_cast<GLfloat>(constant::width));
     glUniform1f(heightLocation, static_cast<GLfloat>(constant::height));
-    glUniform2f(mouseLocation, 0.0f,0.0f) ;
-    
+    glUniform2f(mouseLocation,  mouse.x, mouse.y);
 
-    
+
+    cout <<"mouse posiion :("<< mouse.x << " , " << mouse.y <<")"<< endl;
 
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0 ) ;
     
-    //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-    //glBindVertexArray(0);
+   
     
     glfwPollEvents();
     glfwSwapBuffers(window);
@@ -118,7 +124,10 @@ int main(){
 
   }
 
-// deleting the program shader, not needed anymore
+// deleting the program shader, VAO, EBO and VBO, not needed anymore
+glDeleteVertexArrays(1, &VAO);
+glDeleteBuffers(1, &VBO);
+glDeleteBuffers(1, &EBO);
 glDeleteProgram(shaderProgram) ;
 glfwTerminate();
 return 0 ;

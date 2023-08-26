@@ -8,11 +8,11 @@ namespace constant {
     inline constexpr int height = 700 ;
     inline constexpr float vertices[] = {
                                         // first triangle
-                                        -0.5f, 0.5f, 0.0f, //top left 
-                                         0.5f,-0.5f, 0.0f, //bottom right
-                                        -0.5f,-0.5f, 0.0f, //bottom left
+                                        -1.0f, 1.0f, 1.0f, //top left 
+                                         1.0f,-1.0f, 1.0f, //bottom right
+                                        -1.0f,-1.0f, 0.0f, //bottom left
                                         // second triangle 
-                                         0.5f, 0.5f, 0.0f // top right
+                                         1.0f, 1.0f, 0.0f // top right
 
                                         
                                         
@@ -30,11 +30,11 @@ namespace constant {
     {   Mouse(double x, double y) : x(0), y(0){}
         double x, y;
 
-    };
+    } ;
     struct Color
     {  
    
-        inline static constexpr float red =0.2f, green=0.3, blue = 0.3f, alpha =1.0f;
+        inline static constexpr float red =0.5f, green=0.3, blue = 0.3f, alpha =1.0f;
       
         
     } *color ;
