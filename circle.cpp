@@ -26,12 +26,6 @@ int main(){
     cout <<"GLAD::FAILURE"<<endl;
   
   }
-
-
-
-
-  // program 
-  
   //shaders vertex 
   GLuint vertexShader   = glCreateShader(GL_VERTEX_SHADER)  ;
   // sourcing, compiling shaders and checking if shaders working
@@ -51,9 +45,8 @@ int main(){
   programCheck(shaderProgram) ;
   
   //deleting shaders, they not nedded after linkage
-  //glDeleteShader(vertexShader);
-  //glDeleteShader(fragmentShader) ;
-
+  glDeleteShader(vertexShader);
+  glDeleteShader(fragmentShader) ;
 
   // declaring EBO and VBO
   GLuint EBO, VBO, VAO ;
@@ -61,7 +54,6 @@ int main(){
   glCreateVertexArrays(1, &VAO);
   glCreateBuffers(1, &VBO);
   glCreateBuffers(1, &EBO);
-  
 
   // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
   glBindVertexArray(VAO) ;
@@ -72,17 +64,12 @@ int main(){
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO); 
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(constant::indices), constant::indices,GL_STATIC_DRAW);
   
-  
-  
-  
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
   glEnableVertexAttribArray(0);
 
   glBindBuffer(GL_ARRAY_BUFFER ,0);
   glBindVertexArray(0); 
   
-
-
   // get the location for every uniform data, shader look constants.h, shaders, -->glsl
   GLuint radiusLocation = glGetUniformLocation(shaderProgram, "radius");
   GLuint colorLocation  = glGetUniformLocation(shaderProgram, "Color");
@@ -93,10 +80,11 @@ int main(){
   constant::Mouse mouse(0,0) ;
   
   while(!glfwWindowShouldClose(window)){
-
+    //set the windows color
     glClearColor(0.1,0.1,0.2,1.0) ;
     glClear(GL_COLOR_BUFFER_BIT) ;
 
+    // mouse control
     glfwGetCursorPos(window, &mouse.x, &mouse.y) ;
     mouse.x = (mouse.x/constant::width)*2- 1 ;
     mouse.x = mouse.x > 1 ? 1.0 : mouse.x < -1 ? -1:mouse.x ;
@@ -110,18 +98,12 @@ int main(){
     glUniform1f(heightLocation, static_cast<GLfloat>(constant::height));
     glUniform2f(mouseLocation,  mouse.x, mouse.y);
 
-
     cout <<"mouse position :("<< mouse.x << " , " << mouse.y <<")"<< endl;
 
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0 ) ;
-    
-   
-    
     glfwPollEvents();
     glfwSwapBuffers(window);
-    
-
   }
 
 // deleting the program shader, VAO, EBO and VBO, not needed anymore
